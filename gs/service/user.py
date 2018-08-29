@@ -1,16 +1,13 @@
 # -*- coding:utf-8 -*-
-import datetime
 import logging
 
-from sqlalchemy import desc
-
 from gs.common.cdb import db
-from gs.conf import const, store
-from gs.util import mymodel, mytime
+from gs.model.ba import User
 
 logger = logging.getLogger('user')
 
 
-class PaperSvc(object):
-    db.session.query()
-    pass
+class UserSvc(object):
+    def get_user(self, openid):
+        user = db.session.query(User).filter(User.openid == openid).first()
+        return user

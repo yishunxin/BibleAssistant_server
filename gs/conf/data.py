@@ -1,16 +1,5 @@
 # -*- coding:utf-8 -*-
-import os
-
-# 根目录
-RAWDATA = 'D:/renji5p/rawdata'
-CACHEDATA = 'D:/renji5p/cachedata'
-
-# 相对路径
-LOCAL_DICOM_DIR = RAWDATA + '/indata/'
-COVER_DIR = RAWDATA + '/cover/'
-MIP_PATH = CACHEDATA + '/mip/'
-MIP_CACHE_PATH = CACHEDATA + '/mipone/'
-SAGITTAL_PATH = CACHEDATA + '/sagittal/'
-CORONAL_PATH = CACHEDATA + '/coronal/'
-
-VTK3D_PATH = 'D:/lung/indata/3d'
+chapter_info = [50, 40, 27, 36, 34, 24, 21, 4, 31, 24, 22, 25, 29, 36, 10, 13, 10, 42, 150, 31, 12, 8, 66, 52, 5, 48,
+                12, 14, 3, 9, 1, 4, 7, 3, 3, 3, 2, 14, 4, 28, 16, 24, 21, 28, 18, 16, 13, 6, 6, 4, 4, 5, 3, 6, 4, 3, 1,
+                13, 5,
+                5, 3, 5, 1, 1, 1, 22]
