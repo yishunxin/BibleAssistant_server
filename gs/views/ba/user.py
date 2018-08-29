@@ -11,7 +11,7 @@ logger = logging.getLogger('index')
 
 
 @bp_ba.route('/login', methods=['POST'])
-def record_save():
+def login():
     try:
         form = request.form
         openid = form['openid']
