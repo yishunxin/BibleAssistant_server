@@ -7,12 +7,12 @@ from gs.common import cbusi
 from gs.common.cresponse import common_json_response, jsonify_response
 from gs.conf import apicode
 from gs.service.record import RecordSvc
-from gs.views import ba
+from gs.views import bp_ba
 
 logger = logging.getLogger('index')
 
 
-@ba.route('/record/save', methods=['POST'])
+@bp_ba.route('/record/save', methods=['POST'])
 def record_save():
     try:
         content = request.form['content']

@@ -2,5 +2,5 @@
 
 from flask import Blueprint
 
-ba = Blueprint('ba', __name__,url_prefix='/api001')
+bp_ba = Blueprint('bp_ba', __name__, url_prefix='/api001')
 import ba

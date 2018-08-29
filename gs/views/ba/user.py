@@ -5,12 +5,12 @@ from flask import request
 
 from gs.common.cresponse import common_json_response, jsonify_response
 from gs.conf import apicode
-from gs.views import ba
+from gs.views import bp_ba
 
 logger = logging.getLogger('index')
 
 
-@ba.route('/login', methods=['POST'])
+@bp_ba.route('/login', methods=['POST'])
 def record_save():
     try:
         form = request.form

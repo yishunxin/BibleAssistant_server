@@ -18,6 +18,6 @@ clogger.init(loggerconf.LOGNAME_BA)
 from common import cdb
 
 cdb.init_flaskdb(app)
-from views import ba
+from views import bp_ba
 
-app.register_blueprint(ba)
+app.register_blueprint(bp_ba)
