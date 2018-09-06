@@ -3,8 +3,16 @@ import json
 
 from gs.common.cstore import get_token
 from qiniu import put_file
-
+def get_openid(code):
+    from gs.conf import const
+    url = 'https://api.weixin.qq.com/sns/jscode2session?appid={}&secret={}&js_code={}&grant_type=authorization_code'.format(const.appid,const.appsecret,code)
+    import requests
+    res = requests.get(url)
+    print res.content
+    print type(res.content)
 if __name__ == '__main__':
+    get_openid("021CqI051xFaFL1OhC151V5t051CqI0b")
+    exit()
     a = [u"创世记", u"出埃及记", u"利未记", u"民数记", u"申命记", u"约书亚记", u"士师记", u"路得记", u"撒母耳记上", u"撒母耳记下", u"列王纪上", u"列王记下",
          u"历代志上", u"历代志下", u"以斯拉记", u"尼希米记", u"以斯帖记", u"约伯记", u"诗篇", u"箴言", u"传道书", u"雅歌", u"以赛亚书", u"耶利米书", u"耶利米哀歌",
          u"以西结书", u"但以理书", u"何阿西书", u"约珥书", u"阿摩司书", u"俄巴底亚书", u"约拿书", u"弥迦书", u"那鸿书", u"哈巴谷书", u"西番雅书", u"哈该书",

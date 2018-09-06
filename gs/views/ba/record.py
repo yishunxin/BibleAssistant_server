@@ -24,3 +24,13 @@ def record_save():
     except Exception as e:
         logger.exception(e)
         return jsonify_response(apicode.ERROR)
+
+
+@bp_ba.route('/record/list', methods=['GET'])
+def record_list():
+    try:
+
+        pass
+    except Exception as e:
+        logger.exception(e)
+        return jsonify_response(apicode.ERROR)

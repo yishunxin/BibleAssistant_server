@@ -17,13 +17,11 @@ def set_token(token):
     r = redis.Redis(connection_pool=redis_pool)
     name = const.RKEY_TOKEN + token
     r.hset(name, 'token', token)
-    r.expire(name, const.TOKEN_EXPIRE)
 
 
 def refresh_token(token):
     r = redis.Redis(connection_pool=redis_pool)
     name = const.RKEY_TOKEN + token
-    r.expire(name, const.TOKEN_EXPIRE)
 
 
 def session(token, key):
