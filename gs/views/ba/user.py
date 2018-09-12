@@ -4,8 +4,7 @@ import logging
 from flask import request
 
 from gs.common import csession
-from gs.common.credis import get_redis
-from gs.common.cresponse import common_json_response, jsonify_response
+from gs.common.cresponse import jsonify_response, common_json_response
 from gs.conf import apicode
 from gs.model.ba import User
 from gs.service.app import get_openid, get_unionid
@@ -29,12 +28,16 @@ def login():
         if not user:
             return jsonify_response(apicode.ERROR)
         csession.set_token(openid)
-        return jsonify_response(apicode.OK)
+        return common_json_response(openid=openid)
     except Exception as e:
         logger.exception(e)
         return jsonify_response(apicode.ERROR)
 
-@bp_ba.route('/record/today',methods=['GET'])
+
+@bp_ba.route('/record/today', methods=['GET'])
 def record_today():
     try:
-
+        pass
+    except Exception as e:
+        logger.exception(e)
+        return jsonify_response(apicode.ERROR)

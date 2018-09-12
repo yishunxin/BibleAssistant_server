@@ -1,10 +1,27 @@
 # -*- coding:utf-8 -*-
 import json
 
+import re
 import requests
+from flask import request
 
+from gs.common import csession
 from gs.common.credis import get_redis
-from gs.conf import const
+from gs.common.cresponse import jsonify_response
+from gs.conf import apicode, const
+from gs.views import bp_ba
+from gs.util import myreq
+
+
+@bp_ba.before_request
+def check_user():
+    openid = myreq.getvalue_from_request('openid')
+    if openid and csession.check_token(openid):
+        return
+    path = re.sub('/api.*?/', '/', request.path)
+    if path in const.NOT_LOGIN_PATH:
+        return
+    return jsonify_response(apicode.TOKEN_EXPIRE)
 
 
 def get_openid(code):
@@ -29,10 +46,8 @@ def get_access_token():
 
 
 def get_unionid(openid):
-    url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token={access_token}&openid={openid}".format(
+    url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token={access_token}&openid={openid}&lang=zh_CN".format(
         access_token=get_access_token(), openid=openid)
     res = requests.get(url)
-    res = json.loads(res.content)
-    if 'unionid' in res:
-        return res['unionid']
-    return None
+    unionid = json.loads(res.content)['unionid']
+    return unionid
