@@ -16,6 +16,6 @@ def init(logname):
     logger = logging.getLogger()
     trfh = logging.handlers.TimedRotatingFileHandler(
         'logs/' + logname + '.' + time.strftime('%Y%m%d%H%M%S', time.localtime())
-        + '.log', 'D', 1, 10)
+        + '.logs', 'D', 1, 10)
     trfh.setFormatter(logging.Formatter(logconf.FORMAT))
     logger.addHandler(trfh)

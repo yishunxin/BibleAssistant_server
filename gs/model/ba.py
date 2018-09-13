@@ -27,3 +27,18 @@ class Record(db.Model):
     content = db.Column(db.String)
     create_time = db.Column(db.DateTime, default=mytime.get_now_datetime)
     chapter = db.Column(db.Integer)
+
+
+class Group(db.Model):
+    __tablename__ = 'group'
+    gid = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    man_user_id = db.Column(db.Integer)
+    description = db.Column(db.String)
+    create_time = db.Column(db.DateTime, default=mytime.get_now_datetime)
+
+
+class UserGroup(db.Model):
+    __tablename__ = 'user_group'
+    user_id = db.Column(db.Integer, primary_key=True)
+    group_id = db.Column(db.Integer, primary_key=True)

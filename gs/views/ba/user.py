@@ -11,7 +11,7 @@ from gs.service.app import get_openid, get_unionid
 from gs.service.user import UserSvc
 from gs.views import bp_ba
 
-logger = logging.getLogger('user')
+logger = logging.getLogger('view')
 
 
 @bp_ba.route('/login', methods=['POST'])

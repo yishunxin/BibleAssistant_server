@@ -35,6 +35,7 @@ class RecordSvc(object):
         content = map(int, record.content.split(','))
         record.content_ch = [data.volume_short_list[content[0]], content[1], data.volume_short_list[content[2]],
                              content[3]]
+        record.time = record.create_time.time()
         return record
 
     def record_list(self, start_time=None, end_time=None, start=None, limit=None):
@@ -53,3 +54,13 @@ class RecordSvc(object):
         records = q.all()
         records = map(self.__reocord2view, records)
         return records, chapters
+
+    def record_delete(self, rid):
+        try:
+            db.session.query(Record).filter(Record.rid == rid).delete()
+            db.session.commit()
+            return True
+        except Exception as e:
+            logger.exception(e)
+            db.session.rollback()
+            return False

@@ -8,10 +8,10 @@ from gs.common import cbusi
 from gs.common.cresponse import common_json_response, jsonify_response
 from gs.conf import apicode
 from gs.service.record import RecordSvc
-from gs.util import mytime
+from gs.util import mytime, myreq
 from gs.views import bp_ba
 
-logger = logging.getLogger('index')
+logger = logging.getLogger('view')
 
 
 @bp_ba.route('/record/save', methods=['POST'])
@@ -45,6 +45,19 @@ def record_today():
         records, chapters = RecordSvc().record_list(start_time=datetime.date.today(),
                                                     end_time=str(datetime.date.today()) + ' 23:59:59')
         return common_json_response(records=records, chapters=chapters)
+    except Exception as e:
+        logger.exception(e)
+        return jsonify_response(apicode.ERROR)
+
+
+@bp_ba.route('/record/delete', methods=['GET'])
+def record_delete():
+    try:
+        rid = myreq.getvalue_from_request('rid')
+        bo = RecordSvc().record_delete(rid)
+        if not bo:
+            return jsonify_response(apicode.ERROR)
+        return common_json_response()
     except Exception as e:
         logger.exception(e)
         return jsonify_response(apicode.ERROR)

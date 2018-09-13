@@ -8,7 +8,7 @@ app.config['SECRET_KEY'] = 'BAJ0T01M/2yX P~XHY111111]PPO/,?IT3'
 # 调试模式
 
 # 初始化工作
-# log
+# logs
 from gs.common import clogger
 from gs.conf import logger as loggerconf
 
