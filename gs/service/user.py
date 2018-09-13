@@ -19,7 +19,7 @@ class UserSvc(object):
                 db.session.add(user)
                 db.session.flush()
                 db.session.commit()
-            return user
+            return t_user
         except Exception as e:
             logger.exception(e)
             db.session.rollback()

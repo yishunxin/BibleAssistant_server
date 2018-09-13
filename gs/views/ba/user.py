@@ -27,17 +27,8 @@ def login():
         user = UserSvc().save_user(user)
         if not user:
             return jsonify_response(apicode.ERROR)
-        csession.set_token(openid)
+        csession.set_session(openid,'user',user)
         return common_json_response(openid=openid)
-    except Exception as e:
-        logger.exception(e)
-        return jsonify_response(apicode.ERROR)
-
-
-@bp_ba.route('/record/today', methods=['GET'])
-def record_today():
-    try:
-        pass
     except Exception as e:
         logger.exception(e)
         return jsonify_response(apicode.ERROR)

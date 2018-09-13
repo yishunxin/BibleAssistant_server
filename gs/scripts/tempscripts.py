@@ -1,8 +1,14 @@
 # -*- coding:utf-8 -*-
 import json
 
+import datetime
+
 from gs.common.cstore import get_token
 from qiniu import put_file
+
+from gs.util import mytime
+
+
 def get_openid(code):
     from gs.conf import const
     url = 'https://api.weixin.qq.com/sns/jscode2session?appid={}&secret={}&js_code={}&grant_type=authorization_code'.format(const.appid,const.appsecret,code)
@@ -10,7 +16,7 @@ def get_openid(code):
     res = requests.get(url)
     print res.content
     print type(res.content)
-if __name__ == '__main__':
+def temp():
     get_openid("021CqI051xFaFL1OhC151V5t051CqI0b")
     exit()
     a = [u"创世记", u"出埃及记", u"利未记", u"民数记", u"申命记", u"约书亚记", u"士师记", u"路得记", u"撒母耳记上", u"撒母耳记下", u"列王纪上", u"列王记下",
@@ -42,4 +48,7 @@ if __name__ == '__main__':
         print json.dumps(i, ensure_ascii=False)
     for i in new_dict:
         print json.dumps(i, ensure_ascii=False)
+    pass
+if __name__ == '__main__':
+    print str(datetime.date.today())
     pass
