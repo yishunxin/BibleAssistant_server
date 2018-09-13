@@ -249,7 +249,8 @@ def today():
     get today,date format="YYYY-MM-DD"
     '''''
     return date.today()
-
+def today_begin():
+    return datetime.datetime.today()
 
 def get_day_of_day(n=0):
     '''

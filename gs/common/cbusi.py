@@ -10,8 +10,7 @@ from gs.util import mymodel
 
 
 def get_curr_user(token):
-    user_dict = csession.session(token, 'user')
-    user = mymodel.dicttomodel(user_dict, User)
+    user = csession.session(token, 'user')
     return user
 
 
