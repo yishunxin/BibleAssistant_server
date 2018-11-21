@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 # huawei mysql
-HOST = '114.116.81.153'
+HOST = '182.61.51.31'
 PORT = 3306
 USER = 'shekinah'
-PASSWD = 'Shekinah@365'
+PASSWD = 'shekinah@365'
 DB = 'bible_assistant'
 CHARSET = 'utf8mb4'
 # sqlalchemy 配置 看下面的链接
